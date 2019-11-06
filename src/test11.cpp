@@ -1,3 +1,4 @@
+/* 形态学操作 */
 #include "test.h"
 
 int main()
