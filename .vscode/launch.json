@@ -8,7 +8,7 @@
             "name": "clang++ build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/.vscode/a.out",
+            "program": "${workspaceFolder}/a.out",
             "args": [
                 "${workspaceFolder}/img/img1.png",
             ],
