@@ -6,7 +6,7 @@ int main()
     Mat img = imread("img/img1.png", IMREAD_COLOR);
     imshow("image", img);
 
-    // 画几条水平和竖直直线
+    //画几条水平和竖直直线
     line(img, Point(100, 100), Point(400, 100), Scalar(255, 255, 255), 4);
     line(img, Point(200, 150), Point(550, 150), Scalar(255, 255, 255), 4);
     line(img, Point(150, 400), Point(500, 400), Scalar(255, 255, 255), 4);
