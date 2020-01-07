@@ -4,13 +4,14 @@
 int main()
 {
 	Mat mat1 = Mat(2, 2, CV_8UC3, Scalar(0, 0, 255));
-	cout << "M =" << endl << mat1 << endl;
+	cout << "mat1 =" << endl << mat1 << endl;
 
 	int size[3] = {2, 2, 2};
 	Mat mat2 = Mat(3, size, CV_8UC1, Scalar::all(255));
+	cout << "mat2 =" << endl << mat2 << endl;
 
 	Mat mat3 = Mat(4, 4, CV_8UC3);
-	cout << "M =" << endl << mat3 << endl;
+	cout << "mat3 =" << endl << mat3 << endl;
 	cout << endl;
 
 	Mat mat_e = Mat::eye(4, 4, CV_8UC1);
