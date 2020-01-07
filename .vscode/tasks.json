@@ -2,15 +2,15 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "clang++ build active file",
-            "command": "/usr/bin/clang++",
+            "label": "g++ build active file",
+            "command": "/usr/bin/g++",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
                 "${workspaceFolder}/a.out",
                 "-I${workspaceFolder}/include",
-                "`pkg-config", "--cflags", "--libs", "opencv4`",
+                "`pkg-config", "--cflags", "--libs", "opencv`",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
