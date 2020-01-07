@@ -6,8 +6,8 @@ int main()
 	Mat mat1 = Mat(2, 2, CV_8UC3, Scalar(0, 0, 255));
 	cout << "mat1 =" << endl << mat1 << endl;
 
-	int size[3] = {2, 2, 2};
-	Mat mat2 = Mat(3, size, CV_8UC1, Scalar::all(255));
+	int size[3] = {2, 2};
+	Mat mat2 = Mat(2, size, CV_8UC1, Scalar::all(255));
 	cout << "mat2 =" << endl << mat2 << endl;
 
 	Mat mat3 = Mat(4, 4, CV_8UC3);
@@ -22,9 +22,9 @@ int main()
 	cout << "Z =" << endl << mat_z << endl;
 	cout << endl;
 
-	//Mat row_clone = mat_e.row(2).clone();
-	Mat row_clone;
-	mat_e.row(2).copyTo(row_clone);
+	Mat row_clone = mat_e.row(2).clone();
+	// Mat row_clone;
+	// mat_e.row(2).copyTo(row_clone);
 	cout << "row_clone =" << endl << row_clone << endl;
 	cout << endl;
 	
@@ -33,10 +33,10 @@ int main()
 	cout << "mat_rand =" << endl << mat_rand << endl;
 	cout << endl;
 
-	Point2f p2f(5, 1);
+	Point2f p2f = Point2f(5, 1);
 	cout << "point(2D) = " << p2f << endl;
 
-	Point3f p3f(5, 1, 7);
+	Point3f p3f = Point3f(5, 1, 7);
 	cout << "point(3D) = " << p3f << endl;
 	cout << endl;
 
