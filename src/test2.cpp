@@ -55,5 +55,36 @@ int main()
 	cout << "vet_p2d = " << endl << Mat(vet_p2d) << endl;
 	cout << endl;
 
+	Mat m1 = (Mat_<float>(2, 3) << 1.2, 0.4, 2.9, 2.0, 1.3, 2.2);
+	printf("m1.rows: %d\n", m1.rows);
+	printf("m1.cols: %d\n", m1.cols);
+	printf("m1.channels(): %d\n", m1.channels());
+	printf("m1.depth(): %d\n", m1.depth());
+	printf("m1.elemSize(): %d\n", m1.elemSize());
+	printf("m1.elemSize1(): %d\n", m1.elemSize1());
+
+	printf("m1.size: [");
+	for(int i = 0; i < m1.dims; i++)
+	{
+		printf("%d ", m1.size[i]);
+	}
+	printf("]\n");
+	printf("m1.step: [");
+	for(int i = 0; i < m1.dims; i++)
+	{
+		printf("%d ", m1.step[i]);
+	}
+	printf("]\n");
+	cout << "m1 =" << endl << m1 << endl;
+	cout << endl;
+
+	Mat m2 = (Mat_<float>(3, 4) << 1.2, 0.4, 2.9, 2.0, 1.3, 2.2, 1.2, 0.4, 2.9, 2.0, 1.3, 2.2);
+	cout << "m2 =" << endl << m2 << endl;
+	cout << endl;
+
+	Mat m3 = m1 * m2;
+	cout << "m3 =" << endl << m3 << endl;
+	cout << endl;
+	
 	return 0;
 }
