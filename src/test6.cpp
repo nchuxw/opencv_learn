@@ -8,21 +8,21 @@ int main()
 	img1 = imread("img/parole1.png", IMREAD_COLOR);
 	img2 = imread("img/parole2.png", IMREAD_COLOR);
 	dest = Mat(img1.size(), img1.type());
-	scanf("%f", &alp);
-
-	for(int i = 0; i < img1.rows; i++)
+	while(scanf("%f", &alp) != EOF)
 	{
-		for(int j = 0; j < img1.cols; j++)
+		for(int i = 0; i < img1.rows; i++)
 		{
-			dest.at<Vec3b>(i, j)[0] = img1.at<Vec3b>(i, j)[0] * alp + img2.at<Vec3b>(i, j)[0] * (1 - alp);
-			dest.at<Vec3b>(i, j)[1] = img1.at<Vec3b>(i, j)[1] * alp + img2.at<Vec3b>(i, j)[1] * (1 - alp);
-			dest.at<Vec3b>(i, j)[2] = img1.at<Vec3b>(i, j)[2] * alp + img2.at<Vec3b>(i, j)[2] * (1 - alp);
+			for(int j = 0; j < img1.cols; j++)
+			{
+				dest.at<Vec3b>(i, j)[0] = img1.at<Vec3b>(i, j)[0] * alp + img2.at<Vec3b>(i, j)[0] * (1 - alp);
+				dest.at<Vec3b>(i, j)[1] = img1.at<Vec3b>(i, j)[1] * alp + img2.at<Vec3b>(i, j)[1] * (1 - alp);
+				dest.at<Vec3b>(i, j)[2] = img1.at<Vec3b>(i, j)[2] * alp + img2.at<Vec3b>(i, j)[2] * (1 - alp);
+			}
 		}
+		imshow("img1", img1);
+		imshow("img2", img2);
+		imshow("dest", dest);
+		waitKey(0);
 	}
-	imshow("img1", img1);
-	imshow("img2", img2);
-	imshow("dest", dest);
-
-	waitKey(0);
 	return 0;
 }

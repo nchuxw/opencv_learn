@@ -9,13 +9,17 @@ int main()
 	Mat img4 = Mat(img.size(), img.type());
 	Mat img5 = Mat(img.size(), img.type());
 
+	/* 均值滤波 */
     blur(img, img1, Size(3, 3));
+	/* 高斯滤波 */
     GaussianBlur(img, img2, Size(3, 3), 3, 3);
+	/* 中值滤波 */
 	medianBlur(img, img3, 3);
+	/* 双边滤波 */
 	bilateralFilter(img, img4, 15, 150, 3);
 
 	Mat kernel = (Mat_<char>(3, 3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
-	filter2D(img4, img5, img4.depth(), kernel);
+	filter2D(img, img5, img.depth(), kernel);
 
 	imshow("image", img);
 	imshow("image1", img1);

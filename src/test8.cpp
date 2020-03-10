@@ -6,7 +6,7 @@
 int main()
 {
 	//Mat img = imread(argv[1], IMREAD_COLOR);
-	Mat img = Mat(600, 1000, CV_8UC3, Scalar(220, 220, 220));
+	Mat img = Mat(600, 1000, CV_8UC3, Scalar(100, 100, 100));
 
 	//line(img, Point(0, 0), Point(img.cols, img.rows), Scalar(0, 0, 255), 5);
 	line(img, Point(0, 0), Point(img.cols, img.rows), Scalar(0, 0, 255), 5, LINE_AA);
@@ -38,7 +38,7 @@ int main()
 		p2.y = rand() % 600;
 		line(pane, p1, p2, color, 2);
 		imshow("pane", pane);
-		if(waitKey(50) > 0)
+		if((char)waitKey(50) > 0)
 		{
 			break;
 		}

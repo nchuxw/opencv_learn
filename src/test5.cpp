@@ -19,12 +19,12 @@ int main()
 	{
 		for(int j = 0; j < img.cols; j++)
 		{
-			int b = ~img.at<Vec3b>(i, j)[0];
-			int g = ~img.at<Vec3b>(i, j)[1];
-			int r = ~img.at<Vec3b>(i, j)[2];
-			max_gray.at<uchar>(i, j) = max(b, max(g, r));
-			min_gray.at<uchar>(i, j) = min(b, min(g, r));
-			max_gray.at<uchar>(i, j) = (b + g + r) / 2;
+			int b = img.at<Vec3b>(i, j)[0];
+			int g = img.at<Vec3b>(i, j)[1];
+			int r = img.at<Vec3b>(i, j)[2];
+			max_gray.at<uchar>(i, j) = (uchar)max(b, max(g, r));
+			min_gray.at<uchar>(i, j) = (uchar)min(b, min(g, r));
+			ave_gray.at<uchar>(i, j) = (uchar)((b + g + r) / 3);
 		}
 	}
 	imshow("max_gray", max_gray);

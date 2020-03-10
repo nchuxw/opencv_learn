@@ -5,32 +5,32 @@ int main()
 {
 	Mat img = imread("img/img1.png", IMREAD_COLOR);
 	int divideWith = 0;
-	scanf("%d", &divideWith);
 	imshow("image", img);
-
-	unsigned char table[256];
-	for(int i = 0; i < 256; i++)
+	while(scanf("%d", &divideWith) != EOF)
 	{
-		table[i] = (unsigned char)(i - i % divideWith);
-	}
-
-	int nrow = img.rows;
-	int ncol = img.cols * img.channels();
-	unsigned char* p;
-
-	double t = (double)getTickCount();
-	for(int i = 0; i < nrow; i++)
-	{
-		p = img.ptr<unsigned char>(i);
-		for(int j = 0; j < ncol; j++)
+		unsigned char table[256];
+		for(int i = 0; i < 256; i++)
 		{
-			p[j] = table[p[j]];
+			table[i] = (unsigned char)(i - i % divideWith);
 		}
-	}
-	t = ((double)getTickCount() - t) / getTickFrequency();
-	printf("Time passed in:%lfs\n", t);
-	imshow("image2", img);
 
-	waitKey(0);
+		int nrow = img.rows;
+		int ncol = img.cols * img.channels();
+		unsigned char* p;
+
+		double t = (double)getTickCount();
+		for(int i = 0; i < nrow; i++)
+		{
+			p = img.ptr<unsigned char>(i);
+			for(int j = 0; j < ncol; j++)
+			{
+				p[j] = table[p[j]];
+			}
+		}
+		t = ((double)getTickCount() - t) / getTickFrequency();
+		printf("Time passed in:%lfs\n", t);
+		imshow("image2", img);
+		waitKey(0);
+	}
 	return 0;
 }
