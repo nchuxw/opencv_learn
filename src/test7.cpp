@@ -19,7 +19,7 @@ int main()
 		}
 		imshow("image", img);
 		imshow("image1", img1);
-		waitKey(0);
+		waitKey(100);
 	}
 	return 0;
 }

@@ -6,6 +6,7 @@ int main()
 	Mat img = imread("img/img1.png", IMREAD_COLOR);
 	int divideWith = 0;
 	imshow("image", img);
+	waitKey(100);
 	while(scanf("%d", &divideWith) != EOF)
 	{
 		unsigned char table[256];
@@ -30,7 +31,7 @@ int main()
 		t = ((double)getTickCount() - t) / getTickFrequency();
 		printf("Time passed in:%lfs\n", t);
 		imshow("image2", img);
-		waitKey(0);
+		waitKey(100);
 	}
 	return 0;
 }

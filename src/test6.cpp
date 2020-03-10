@@ -8,6 +8,8 @@ int main()
 	img1 = imread("img/parole1.png", IMREAD_COLOR);
 	img2 = imread("img/parole2.png", IMREAD_COLOR);
 	dest = Mat(img1.size(), img1.type());
+	waitKey(100);
+
 	while(scanf("%f", &alp) != EOF)
 	{
 		for(int i = 0; i < img1.rows; i++)
@@ -22,7 +24,7 @@ int main()
 		imshow("img1", img1);
 		imshow("img2", img2);
 		imshow("dest", dest);
-		waitKey(0);
+		waitKey(100);
 	}
 	return 0;
 }
