@@ -67,7 +67,7 @@ int main()
 
 	while(scanf("%d %d", &dst_size.height, &dst_size.width) != EOF)
 	{
-		cv::resize(src, dst, dst_size, INTER_LINEAR);
+		cv::resize(src, dst, dst_size, 0, 0, INTER_LINEAR);
 		imshow("opencv resize", dst);
 		waitKey(100);
 
