@@ -47,9 +47,9 @@ void bilinear_interpolation(Mat src, Mat &dst, Size dst_size)
 			uy = (int)sfp.y;
 			dy = uy + 1;
 
-			xf1 = (sfp.x - lx) * src.at<uchar>(uy, lx) + (rx - sfp.x) * src.at<uchar>(uy, rx);
-			xf2 = (sfp.x - lx) * src.at<uchar>(dy, lx) + (rx - sfp.x) * src.at<uchar>(dy, rx);
-			xyf = (sfp.y - uy) * xf1 + (dy - sfp.y) * xf2;
+			xf1 = (rx - sfp.x) * src.at<uchar>(uy, lx) + (sfp.x - lx) * src.at<uchar>(uy, rx);
+			xf2 = (rx - sfp.x) * src.at<uchar>(dy, lx) + (sfp.x - lx) * src.at<uchar>(dy, rx);
+			xyf = (dy - sfp.y) * xf1 + (sfp.y - uy) * xf2;
 			dst.at<uchar>(i, j) = (uchar)xyf;
 		}
 	}

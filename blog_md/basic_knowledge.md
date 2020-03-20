@@ -51,13 +51,13 @@ $$y_f = \frac{H_s}{H_d} \times y_d$$
 &emsp;&emsp;接下来在原图像中寻找离浮点坐标$(x_f,y_f)$最近的四个像素点，分别是坐标为$(\lfloor x_f \rfloor,\lfloor y_f \rfloor)$，$(\lfloor x_f + 1 \rfloor,\lfloor y_f \rfloor)$，$(\lfloor x_f \rfloor,\lfloor y_f + 1 \rfloor)$，$(\lfloor x_f + 1 \rfloor,\lfloor y_f + 1 \rfloor)$的四个像素。根据这四个像素计算出浮点坐标的像素值，再将浮点坐标的像素值作为目标图像对应位置的像素值。浮点坐标的像素值的计算方法如下：
 &emsp;&emsp;首先，在$x$方向上进行两次线性插值计算，计算出$(x_f,\lfloor y_f \rfloor)$和$(x_f,\lfloor y_f + 1 \rfloor)$处的像素值，计算公式如下，设原图中在点$(x,y)$处的像素值为$f_s(x,y)$
 
-$$f_s(x_f,\lfloor y_f \rfloor) = (x_f - \lfloor x_f \rfloor) \times f_s(\lfloor x_f \rfloor,\lfloor y_f \rfloor) + (\lfloor x_f + 1 \rfloor - x_f) \times f_s(\lfloor x_f + 1 \rfloor,\lfloor y_f \rfloor$$
+$$f_s(x_f,\lfloor y_f \rfloor) = (\lfloor x_f + 1 \rfloor - x_f) \times f_s(\lfloor x_f \rfloor,\lfloor y_f \rfloor) + (x_f - \lfloor x_f \rfloor) \times f_s(\lfloor x_f + 1 \rfloor,\lfloor y_f \rfloor$$
 
-$$f_s(x_f,\lfloor y_f + 1 \rfloor) = (x_f - \lfloor x_f \rfloor) \times f_s(\lfloor x_f \rfloor,\lfloor y_f + 1 \rfloor) + (\lfloor x_f + 1 \rfloor - x_f) \times f_s(\lfloor x_f + 1 \rfloor,\lfloor y_f + 1 \rfloor$$
+$$f_s(x_f,\lfloor y_f + 1 \rfloor) = (\lfloor x_f + 1 \rfloor - x_f) \times f_s(\lfloor x_f \rfloor,\lfloor y_f + 1 \rfloor) + (x_f - \lfloor x_f \rfloor) \times f_s(\lfloor x_f + 1 \rfloor,\lfloor y_f + 1 \rfloor)$$
 
 &emsp;&emsp;然后利用$f_s(x_f,\lfloor y_f \rfloor)$和$f_s(x_f,\lfloor y_f + 1 \rfloor)$在$y$方向上进行一次插值计算，得出$f_s(x_f,y_f)$，计算公式如下：
 
-$$f_s(x_f,y_f) = (y_f - \lfloor y_f \rfloor) \times f_s(x_f,\lfloor y_f \rfloor) + (\lfloor y_f + 1\rfloor - y_f) \times f_s(x_f,\lfloor y_f + 1 \rfloor)$$
+$$f_s(x_f,y_f) = (\lfloor y_f + 1\rfloor - y_f) \times f_s(x_f,\lfloor y_f \rfloor) + (y_f - \lfloor y_f \rfloor) \times f_s(x_f,\lfloor y_f + 1 \rfloor)$$
 
 &emsp;&emsp;实际上，双线性内插是根据四个像素点与浮点坐标的距离来计算四个像素点的权重，然后将四个像素点的加权平均和作为浮点坐标的像素值。图片使用双线性内插的缩放效果要优于最邻近内插，但是计算量要比最邻近内插大一点。[^双线性内插]
 [^双线性内插]: 有关双线性内插的内容参考了<https://www.cnblogs.com/yssongest/p/5303151.html>
