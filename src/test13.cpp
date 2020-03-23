@@ -1,5 +1,8 @@
-/* 图片的缩放 */
-#include "test.h"
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace cv;
 
 /* 最近邻内插 */
 void nearest_interpolation(Mat src, Mat &dst, Size dst_size)
@@ -58,26 +61,22 @@ void bilinear_interpolation(Mat src, Mat &dst, Size dst_size)
 int main()
 {
 	Mat src, dst;
-	Size dst_size;
+	Size dst_size = cv::Size(2000, 1000);
 
 	src = cv::imread("img/img1.png", cv::IMREAD_COLOR);
 	cvtColor(src, src, COLOR_BGR2GRAY);
 	imshow("src", src);
-	waitKey(100);
 
-	while(scanf("%d %d", &dst_size.height, &dst_size.width) != EOF)
-	{
-		cv::resize(src, dst, dst_size, 0, 0, INTER_LINEAR);
-		imshow("opencv resize", dst);
-		waitKey(100);
+	nearest_interpolation(src, dst, dst_size);
+	imshow("nearest interpolation", dst);
 
-		nearest_interpolation(src, dst, dst_size);
-		imshow("nearest interpolation", dst);
-		waitKey(100);
+	bilinear_interpolation(src, dst, dst_size);
+	imshow("bilinear interpolation", dst);
 
-		bilinear_interpolation(src, dst, dst_size);
-		imshow("bilinear interpolation", dst);
-		waitKey(100);
-	}
+	/* opencv的双线性内插接口 */
+	cv::resize(src, dst, dst_size, 0, 0, INTER_LINEAR);
+	imshow("opencv resize", dst);
+
+	waitKey(0);
 	return 0;
 }
