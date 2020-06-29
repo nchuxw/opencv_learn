@@ -1,3 +1,4 @@
+/* 膨胀和腐蚀 */
 #include "test.h"
 
 void call_back_deal(int num, void *vdata)

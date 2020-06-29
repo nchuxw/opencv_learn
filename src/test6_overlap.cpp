@@ -1,3 +1,4 @@
+/* 图像重合 */
 #include "test.h"
 
 int main()

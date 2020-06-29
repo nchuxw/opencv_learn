@@ -1,3 +1,4 @@
+/* 绘制图案 */
 #include "test.h"
 #include <vector>
 #include <time.h>
