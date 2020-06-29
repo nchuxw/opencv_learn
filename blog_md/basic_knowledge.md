@@ -109,4 +109,7 @@ $$H[f_i(x, y) + f_j(x, y)] = H[f_i(x, y)] + H[f_i(x, y)]$$
 $$H[a \times f(x, y)] = a \times H[f(x, y)]$$
 &emsp;&emsp;**线性操作**：同时满足加性和同质性的操作，线性操作的算子成为线性算子，如果$H$是一个线性算子，则需要满足：
 $$H[a_if_i(x, y) + a_jf_j(x, y)] = a_iH[f_i(x, y)] + a_jH[f_j(x, y)] = a_ig_i(x, y) + a_jg_j(x, y)$$
+&emsp;&emsp;上式中，$a_i$和$a_j$是任意常数，$f_i(x, y)$和$f_j(x, y)$是任意大小相同的图像。
+
+## 算术操作
 
