@@ -10,7 +10,7 @@
                 "-o",
                 "${workspaceFolder}/a.out",
                 "-I${workspaceFolder}/include",
-                "`pkg-config", "--cflags", "--libs", "opencv`",
+                "`pkg-config", "--cflags", "--libs", "opencv4`",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

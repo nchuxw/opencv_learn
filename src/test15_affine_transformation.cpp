@@ -2,7 +2,7 @@
 #include "test.h"
 
 /* 原图路径 */
-char img_path[100] = "img/tl.png";
+char img_path[100] = "img/affine.png";
 /* 变换后图像的大小 */
 Size img_out_size = {300, 300};
 /* 仿射矩阵 */
@@ -16,21 +16,21 @@ double T[3][3] =
 /* 利用双线性内插计算原图中的浮点像素值 */
 double bilinear_interpolation(Mat src, double x, double y)
 {
-	if(x < 0 || x > src.rows || y < 0 || y > src.cols)
+	if(x < 0 || x > src.cols || y < 0 || y > src.rows)
 	{
 		return 0;
 	}
 
-	/* 表示在原图中与浮点像素最近的四个整数坐标值(ux:上x、dx:下x、ly:左y、ry:右y) */
-	double ux = (int)x;
-	double dx = ux + 1;
-	double ly = (int)y;
-	double ry = ly + 1;
+	/* 表示在原图中与浮点像素最近的四个整数坐标值(lx:左x、rx:右x、uy:上y、dy:下y) */
+	double lx = (int)x;
+	double rx = lx + 1;
+	double uy = (int)y;
+	double dy = uy + 1;
 
-	/* y方向的两个像素点值，xy两个方向上的像素点值 */
-	double f1 = (dx - x) * src.at<uchar>(ux, ly) + (x - ux) * src.at<uchar>(dx, ly);
-	double f2 = (dx - x) * src.at<uchar>(ux, ry) + (x - ux) * src.at<uchar>(dx, ry);
-	double xy = (ry - y) * f1 + (y - ly) * f2;
+	/* 先计算y方向的两个像素点值f1、f2，再计算xy两个方向上的像素点值 */
+	double f1 = (rx - x) * src.at<uchar>(uy, lx) + (x - lx) * src.at<uchar>(uy, rx);
+	double f2 = (rx - x) * src.at<uchar>(dy, lx) + (x - lx) * src.at<uchar>(dy, rx);
+	double xy = (dy - y) * f1 + (y - uy) * f2;
 	return xy;
 }
 
@@ -51,7 +51,7 @@ int main()
 		for(j = 0; j < dst.cols; j++)
 		{
 			/* 目标图像的坐标向量 */
-			dst_vec = (Mat_<double>(1, 3) << i, j, 1);
+			dst_vec = (Mat_<double>(1, 3) << j, i, 1);
 			/* 计算dst_vec对应于原图中的坐标向量src_vec */
 			src_vec = dst_vec * t_inv;
 			/* 计算目标图像的浮点像素值 */
