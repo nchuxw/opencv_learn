@@ -1,5 +1,12 @@
 /* 图像的仿射变换 */
-#include "test.h"
+#include <stdio.h>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
 
 /* 原图路径 */
 char img_path[100] = "img/affine.png";

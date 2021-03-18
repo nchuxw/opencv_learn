@@ -1,5 +1,13 @@
 /* 卷积和池化 */
-#include "test.h"
+#include <stdio.h>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
+
 #define MAX(a, b) ((a) < (b) ? (b) : (a))
 
 void pool_max(Mat src, Mat &des)

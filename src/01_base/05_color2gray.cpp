@@ -1,6 +1,13 @@
 /* 图像灰度处理 */
-#include "test.h"
+#include <stdio.h>
 #include <math.h>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
 
 int main()
 {

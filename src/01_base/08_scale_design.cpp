@@ -1,8 +1,15 @@
 /* 绘制图案 */
-#include "test.h"
-#include <vector>
+#include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <vector>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
 
 int main()
 {

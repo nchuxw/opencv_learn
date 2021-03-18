@@ -1,5 +1,12 @@
 /* 提取水平和竖直直线 */
-#include "test.h"
+#include <stdio.h>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
 
 int main()
 {

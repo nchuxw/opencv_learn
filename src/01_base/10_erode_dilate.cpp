@@ -1,5 +1,12 @@
 /* 膨胀和腐蚀 */
-#include "test.h"
+#include <stdio.h>
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
+using namespace std;
+using namespace cv;
 
 void call_back_deal(int num, void *vdata)
 {
